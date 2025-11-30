@@ -173,8 +173,8 @@ IDS akan langsung menampilkan alert di:
 
 ## 👤 Author
 
-**Aldo Aldo**
-GitHub: [github.com/aldorefatar](https://github.com/aldorefatar)
+**Natlane**
+GitHub: [github.com/aldorefatar](https://github.com/Natlane)
 
 ---
 
