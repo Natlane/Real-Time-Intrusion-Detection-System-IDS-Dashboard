@@ -1,0 +1,18 @@
+jika di terminal ids tidak muncul apa apa maka lakukan intruksi dibawah ini by @AldMIn or secondary chara
+
+pada line 100 pada ids.py
+      sniff(iface="eth0", prn=detect_packet, store=False)
+ubah ifacenya ke "lo" kalo ingin mengecek jaringan local saja karena saya uji coba di VM kali linux yang menggunakan koneksi NAT supaya bisa mendeteksi alert maka pakailah yang ini
+    sniff(iface="lo", prn=detect_packet, store=False)
+
+untuk yang di web juga pada line 151
+    sniff(iface="eth0", prn=detect_packet, store=False)
+jangan lupa jika anda sama seperti saya yaitu pakai VM linux koneksi NAT maka ganti lah dengan ini
+    sniff(iface="lo", prn=detect_packet, store=False)
+
+sedikit for your information di dalam ids ini ada 3 cara mengecek jaringan yaitu
+    sniff(iface="eth0", prn=detect_packet, store=False)
+    sniff(iface="lo", prn=detect_packet, store=False)
+    sniff(iface="wlan0", prn=detect_packet, store=False)
+
+masing masing digunakan sesuai jaringan yang dipakai atau dianalisis
