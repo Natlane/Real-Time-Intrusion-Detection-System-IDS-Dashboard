@@ -1,106 +1,100 @@
-# 🛡️ Real-Time Intrusion Detection System (IDS) Dashboard
+# 🛡️ Real-Time Intrusion Detection System (IDS) + Web Dashboard
 
-**by Aldo Aldo (@aldorefatar)**
+**by Kgs Abdul Fatah Revaldo (@Natlane)**
 
-<img src="screenshot-dashboard.png" width="700" alt="Dashboard Screenshot"/>  
-*📌 Ganti dengan screenshot asli setelah project dijalankan*
+<img width="1920" height="923" alt="image" src="https://github.com/user-attachments/assets/5b4dccb5-642b-46ca-83ad-a1349a6508eb" />
 
+---
 
 ## 📖 Deskripsi Project
 
-Project ini adalah **Intrusion Detection System (IDS)** sederhana berbasis Python yang mampu:
+Project ini adalah **Intrusion Detection System (IDS)** sederhana namun powerful yang berjalan di:
 
-* Mendeteksi serangan jaringan (SYN scan, XMAS scan, NULL scan, dan pola mencurigakan lainnya)
-* Menganalisis paket real-time menggunakan **Scapy**
-* Menampilkan alert + grafik statistik serangan secara **real-time lewat Web Dashboard**
-* Mengirim data live menggunakan **Flask + Socket.IO**
+* **Terminal** (alert real-time dari `ids.py`)
+* **Web Dashboard realtime** (dari `ids_dashboard.py`)
 
-IDS ini ringan, mudah dipahami, dan cocok digunakan sebagai:
+Project ini memanfaatkan Python + Scapy untuk menangkap paket jaringan dan Flask-SocketIO untuk menampilkan alert & grafik secara langsung lewat browser.
 
-* Tugas kampus
-* Portfolio GitHub
-* Bahan belajar cybersecurity & network monitoring
+Cocok untuk:
+* Latihan analisis paket / IDS sederhana
 
 ---
 
-## 🚀 Fitur Utama
+## ⚙️ Fitur-Fitur Utama
 
-### 🔥 **Real-Time Monitoring**
+### 🛡️ Engine IDS (`ids.py`)
 
-Dashboard web menampilkan:
+Mendeteksi:
 
-* Grafik line jumlah paket/menit
-* Daftar alert serangan yang muncul live
-* Statistik source IP terbanyak
-
-### 🛡️ **Detection Engine**
-
-IDS mampu mendeteksi:
-
-* Port Scan (Nmap)
-* SYN Flood
+* SYN Scan
 * NULL Scan
 * XMAS Scan
-* Malformed Packet
-* Paket mencurigakan lainnya
+* Port scanning umum
+* Pola paket mencurigakan
+* Flooding dasar
 
-### 📊 **Live Traffic Analyzer**
+Menampilkan:
 
-* Paket masuk dihitung per menit
-* Disimpan dalam memori untuk membuat grafik real-time
+* Source IP
+* Jenis serangan
+* Port yang diserang
 
-### 🌐 **Web Dashboard**
+### 🌐 Real-Time Web Dashboard (`ids_dashboard.py`)
 
-Dibangun menggunakan:
+* Menampilkan alert live
+* Grafik jumlah paket per menit
+* Live update memakai WebSocket (Socket.IO)
+* HTML langsung di dalam Python (tidak butuh template folder)
 
-* Flask
-* Socket.IO
-* Eventlet
-* Chart.js
+### 🧪 File Testing (`test_ids.py`)
 
----
+Mempermudah kamu untuk:
 
-## 📂 Struktur Project
-
-```
-📦 ids-dashboard
- ┣ 📜 app.py                # Flask + Socket.IO + IDS logic
- ┣ 📜 ids_core.py           # Engine IDS (jika dipisah)
- ┣ 📜 static/
- │   ┗ 📜 chart.js
- ┣ 📜 templates/
- │   ┗ 📜 index.html        # Web dashboard
- ┣ 📜 README.md
- ┗ 📸 screenshot-dashboard.png (placeholder)
-```
+* Kirim paket testing
+* Lihat respons IDS
+* Debugging sebelum uji Nmap
 
 ---
 
-## 📦 Instalasi
+## 📂 Struktur Repository
 
-### 1. Clone Repository
+```
+📦 ids-real-time
+ ┣ 📜 ids.py               # Engine utama IDS
+ ┣ 📜 test_ids.py          # Script sederhana untuk ngetes IDS
+ ┣ 📜 ids_dashboard.py     # Web dashboard (HTML embed)
+ ┣ 📜 README.md            # File dokumentasi
+ ┗ 📸 IDS-web-ss.png (placeholder)
+ ┗ 📸 IDS-screenshot.png (placeholder)
+```
+
+---
+
+## 🛠️ Instalasi
+
+### 1. Clone repository
 
 ```bash
-git clone https://github.com/aldorefatar/ids-dashboard.git
-cd ids-dashboard
+git clone https://github.com/Natlane/Real-Time-Intrusion-Detection-System-IDS.git
+cd IDS
 ```
 
-### 2. Buat Virtual Environment
+### 2. Buat Virtual Environment (disarankan)
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 3. Install Dependencies
+### 3. Install dependencies
 
-⚠ Kalau menggunakan Kali Linux, gunakan opsi:
+Untuk Kali Linux(karena saya pakai ini di VM):
 
 ```bash
 pip install flask flask-socketio eventlet scapy --break-system-packages
 ```
 
-Atau di venv biasa:
+Untuk OS lain:
 
 ```bash
 pip install flask flask-socketio eventlet scapy
@@ -108,52 +102,71 @@ pip install flask flask-socketio eventlet scapy
 
 ---
 
-## ▶️ Cara Menjalankan IDS
+## 🚀 Cara Menjalankan
+
+### 🛡️ Mode Terminal (IDS CLI)
 
 ```bash
-sudo python3 app.py
+sudo python3 ids.py
 ```
 
-Kemudian buka browser:
+IDS akan mulai mendeteksi paket secara realtime.
+
+---
+
+### 🌐 Mode Web Dashboard
+
+```bash
+sudo python3 ids_dashboard.py
+```
+
+Lalu buka browser:
 
 ```
 http://127.0.0.1:5000
 ```
 
-Dashboard akan tampil dan alert akan muncul secara real-time.
+Kamu akan melihat:
+
+* Alert real-time
+* Grafik paket live
+* Statistik serangan
 
 ---
 
-## 📸 Screenshot (Ganti Dengan Versi Asli)
+## 🧪 Testing Serangan (Nmap)
 
-**Dashboard Realtime:**
-
-![Dashboard](screenshot-dashboard.png)
-
----
-
-## 🧪 Cara Testing Serangan
-
-Contoh Nmap test:
+Jalankan commands ini dari mesin lain atau dari VM:
 
 ```bash
 nmap -sS 127.0.0.1
-nmap -sX 127.0.0.1
 nmap -sN 127.0.0.1
+nmap -sX 127.0.0.1
+nmap -F 127.0.0.1
 ```
 
-IDS akan otomatis menampilkan alert.
+IDS akan langsung menampilkan alert di:
+
+* Terminal (ids.py)
+* Dashboard (ids_dashboard.py)
 
 ---
 
-## 🧠 Teknologi yang Digunakan
+## 📸 Screenshot (Ganti Nanti)
 
-* Python 3
+**Terminal Real-Time:**
+![Terminal Screenshot](IDS-screenshot.png)
+
+---
+
+## 🔧 Teknologi yang Digunakan
+
+* Python 3.10
+* Scapy
 * Flask
 * Flask-SocketIO
 * Eventlet
-* Scapy
-* HTML + CSS + Chart.js
+* HTML/CSS + Chart.js (embedded)
 
 ---
 
@@ -164,15 +177,8 @@ GitHub: [github.com/aldorefatar](https://github.com/aldorefatar)
 
 ---
 
-## ⭐ Suka project ini?
+## ⭐ Support
 
-Boleh banget kasih **star ⭐ di GitHub** untuk dukungan dan perkembangan selanjutnya!
+Kalau project ini membantu, boleh banget kasih **Star ⭐** ke repository-nya!
 
 ---
-
-Kalau kamu mau, aku juga bisa:
-✅ buatin **preview GIF**
-✅ buatin **logo untuk dashboard**
-✅ buatin **deskripsi untuk posting LinkedIn**
-
-Tinggal bilang aja!
