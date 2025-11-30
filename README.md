@@ -1,5 +1,3 @@
----
-
 # 🛡️ Real-Time Intrusion Detection System (IDS) Dashboard
 
 **by Aldo Aldo (@aldorefatar)**
@@ -7,7 +5,6 @@
 <img src="screenshot-dashboard.png" width="700" alt="Dashboard Screenshot"/>  
 *📌 Ganti dengan screenshot asli setelah project dijalankan*
 
----
 
 ## 📖 Deskripsi Project
 
