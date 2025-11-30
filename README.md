@@ -155,7 +155,8 @@ IDS akan langsung menampilkan alert di:
 ## 📸 Screenshot (Ganti Nanti)
 
 **Terminal Real-Time:**
-![Terminal Screenshot](IDS-screenshot.png)
+![Terminal Screenshot]
+<img width="1920" height="923" alt="image" src="https://github.com/user-attachments/assets/c34f0ef8-8d62-4509-a929-9b28eb878c69" />
 
 ---
 
